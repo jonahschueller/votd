@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/firestore": "^4.5.0"
+    "@google-cloud/firestore": "^4.5.0",
+    "@google-cloud/functions-framework": "^1.7.1",
+    "express": "^4.17.1"
   }
 }
