@@ -16,7 +16,20 @@ const pollPath = 'poll'
 // Instantiate an express object
 var app = express();
 
-// This URL can be used to fetch polls by their id
+function extractLimit(req) {
+     // Set a default limit
+     var limit = 10;
+
+     // In case the client specified a custom limit
+     // Allow max batch size of 50
+     if (req.query.limit && req.query.limit < 50) {
+          limit = req.query.limit;
+     }
+
+     return limit
+}
+
+//* This URL can be used to fetch polls by their id
 app.use('/poll/:id', (req, res) => {
 
      // Get the id from the url
@@ -49,22 +62,33 @@ app.use('/poll/:id', (req, res) => {
      }
 });
 
-// This endpint will send the latest added polls to the client
+//* This endpint will send the latest added polls to the client
 app.use('/polls/latest', (req, res) => {
-     // Set a default limit
-     var limit = 10;
-
-     // In case the client specified a custom limit
-     // Allow max batch size of 50
-     if (req.query.limit && req.query.limit < 50) {
-          limit = req.query.limit;
-     }
+     // Get the doc limit
+     var limit = extractLimit(req);
 
      // Get the firestore reference
      const ref = firestore.collection(pollCollection);
      
      // Order and limit the data
      ref.orderBy('timestamp').limit(limit).get()
+     .then((polls) => { // Send back the data to the client
+          return res.status(200).send({
+               "polls": polls.docs.map( doc => doc.data() )
+          });
+     }).catch((err) => { // In case of an error send back an error.
+          return res.status(404).send(err)
+     });
+});
+
+app.use('/polls/popular', (req, res) => {
+     // Get the doc limit
+     var limit = extractLimit(req);
+
+     // Get the firestore reference
+     const ref = firestore.collection(pollCollection);
+     
+     ref.orderBy('votes').limit(limit).get() 
      .then((polls) => { // Send back the data to the client
           return res.status(200).send({
                "polls": polls.docs.map( doc => doc.data() )
