@@ -16,31 +16,33 @@ const pollPath = 'poll'
 // Instantiate an express object
 var app = express();
 
+// This URL can be used to fetch polls by their id
 app.use('/poll/:id', (req, res) => {
+
+     // Get the id from the url
      let id = req.params.id;
 
-     const ref = firestore.doc(`${pollCollection}/${id}`);
-     
+     // Make sure the id exist
      if (id != null) {
+          // Get the firestore reference
+          const ref = firestore.doc(`${pollCollection}/${id}`);
+
+          // Get the document
           ref.get()
           .then((doc) => {
-               console.log(id);
-     
-               if (doc.exists) {
+               if (doc.exists) { // If the document exists -> Send the data back
                     return res.status(200).send(doc.data());
-               }else {
+               }else { // Otherwise -> Send back an error.
                     res.status(404).send({
                          message: "Seems like this poll doesn't exist."
                     });
                }
-     
           }).catch ((err) => {
-               console.log("err");
                return res.status(200).send({
                     message: "Seems like this poll doesn't exist."
                });
           });
-     }else {
+     }else { // Something went wrong. There is no id specified.
           res.status(404).send({
                message: "Id not specified"
           });
@@ -58,14 +60,16 @@ app.use('/polls/latest', (req, res) => {
           limit = req.query.limit;
      }
 
+     // Get the firestore reference
      const ref = firestore.collection(pollCollection);
      
+     // Order and limit the data
      ref.orderBy('timestamp').limit(limit).get()
-     .then((polls) => {
+     .then((polls) => { // Send back the data to the client
           return res.status(200).send({
                "polls": polls.docs.map( doc => doc.data() )
           });
-     }).catch((err) => {
+     }).catch((err) => { // In case of an error send back an error.
           return res.status(404).send(err)
      });
 });
