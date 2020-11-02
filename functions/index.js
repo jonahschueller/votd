@@ -2,7 +2,8 @@ const Firestore = require('@google-cloud/firestore');
 const express = require('express');
 
 const firestore = new Firestore({
-  projectId: 'code-it-292909'
+  projectId: 'code-it-292909',
+  keyFilename: '/Users/jonahschueller/.config/gcloud/code-it-292909-abacc04d59f0.json',
 });
 
 // Firestore collection paths
@@ -38,20 +39,12 @@ app.use('/polls/latest', (req, res) => {
      
      ref.orderBy('timestamp').limit(limit).get()
      .then((polls) => {
-          return res.status(200).send(polls.docs);
-     })
-     .catch((err) => {
-          return res.status(404).send(value)
+          return res.status(200).send({
+               "polls": polls.docs.map( doc => doc.data() )
+          });
+     }).catch((err) => {
+          return res.status(404).send(err)
      });
-
-
-     // if (!polls.empty) {
-     //      return res.status(200).send(polls.docs);
-     // } else {
-          // return res.status(404).send({
-          //      message: `No polls found.`
-          // })
-     // }
 });
 
 // Make the GFS handler use the express app.
