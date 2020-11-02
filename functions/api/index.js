@@ -29,6 +29,13 @@ function extractLimit(req) {
      return limit
 }
 
+function preparePoll(doc) {
+     return {
+          id: doc.id,
+          data: doc.data()
+     }
+}
+
 //* This URL can be used to fetch polls by their id
 app.use('/poll/:id', (req, res) => {
 
@@ -44,7 +51,7 @@ app.use('/poll/:id', (req, res) => {
           ref.get()
           .then((doc) => {
                if (doc.exists) { // If the document exists -> Send the data back
-                    return res.status(200).send(doc.data());
+                    return res.status(200).send(preparePoll(doc));
                }else { // Otherwise -> Send back an error.
                     res.status(404).send({
                          message: "Seems like this poll doesn't exist."
@@ -74,7 +81,7 @@ app.use('/polls/latest', (req, res) => {
      ref.orderBy('timestamp').limit(limit).get()
      .then((polls) => { // Send back the data to the client
           return res.status(200).send({
-               "polls": polls.docs.map( doc => doc.data() )
+               "polls": polls.docs.map( doc => preparePoll(doc) )
           });
      }).catch((err) => { // In case of an error send back an error.
           return res.status(404).send(err)
@@ -91,7 +98,7 @@ app.use('/polls/popular', (req, res) => {
      ref.orderBy('votes').limit(limit).get() 
      .then((polls) => { // Send back the data to the client
           return res.status(200).send({
-               "polls": polls.docs.map( doc => doc.data() )
+               "polls": polls.docs.map( doc => preparePoll(doc) )
           });
      }).catch((err) => { // In case of an error send back an error.
           return res.status(404).send(err)
