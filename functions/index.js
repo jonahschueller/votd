@@ -19,9 +19,32 @@ var app = express();
 app.use('/poll/:id', (req, res) => {
      let id = req.params.id;
 
-     return res.status(200).send({
-          message: `Fetching poll: ${id}`
-     });
+     const ref = firestore.doc(`${pollCollection}/${id}`);
+     
+     if (id != null) {
+          ref.get()
+          .then((doc) => {
+               console.log(id);
+     
+               if (doc.exists) {
+                    return res.status(200).send(doc.data());
+               }else {
+                    res.status(404).send({
+                         message: "Seems like this poll doesn't exist."
+                    });
+               }
+     
+          }).catch ((err) => {
+               console.log("err");
+               return res.status(200).send({
+                    message: "Seems like this poll doesn't exist."
+               });
+          });
+     }else {
+          res.status(404).send({
+               message: "Id not specified"
+          });
+     }
 });
 
 // This endpint will send the latest added polls to the client
