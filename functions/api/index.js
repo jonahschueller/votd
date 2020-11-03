@@ -105,5 +105,38 @@ app.use('/polls/popular', (req, res) => {
      });
 });
 
+// * Gives the client the ability to search for keywords
+app.use('/polls/search', (req, res) => {
+
+     // Extract the limit for the query
+     let limit = extractLimit(req);
+
+     var keywords = []
+
+     // Extract the query keywords
+     if (req.query.keywords instanceof Array) {
+          keywords = req.query.keywords
+     } else {
+          keywords = [req.query.keywords]
+     }
+
+     // Map all keywords to lowercase to make the search less precise
+     keywords = keywords.map(keyword => keyword.toLowerCase());
+
+     // Get a reference to the firestore collection
+     let ref = firestore.collection(pollCollection);
+
+     // Include a poll if it has at least one of the given keywords
+     ref.where('keywords', 'array-contains-any', keywords).limit(limit).get()
+     .then((polls) => { // Send back the data to the client
+          return res.status(200).send({
+               "polls": polls.docs.map( doc => preparePoll(doc) )
+          });
+     }).catch((err) => { // In case of an error send back an error.
+          return res.status(404).send(err)
+     });
+
+});
+
 // Make the GFS handler use the express app.
 exports.restAPI = app;

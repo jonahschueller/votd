@@ -8,6 +8,7 @@ What can the REST-API do?
   - Latest polls ✅
   - Most popular polls ✅
   - Polls by ID ✅
+  - Serach for polls ✅
 
 ### Schema
 
@@ -46,3 +47,31 @@ curl <api-endpoint>/polls/popular/?limit=10
 ```
 
 This will give you the 10 latest polls.
+
+##### /polls/search
+
+This path will send you a list of polls that conform to the specified keywords.
+The search is not case sensitive.
+
+###### Parameters
+
+_keywords_: A list of keywords to filter the polls
+
+Example:
+```
+curl <api-endpoint>/polls/search/?keywords=Guitar&keywords=music
+```
+
+This query will give you polls that either contain the work _guitar_ or _music_.
+
+_limit:_ The limit parameter will limit the amount of polls the API sends to you. The overall maximum is 50 polls.
+
+Example:
+```
+curl <api-endpoint>/polls/search/?limit=10
+```
+
+This will give you the 10 latest polls.
+
+
+
