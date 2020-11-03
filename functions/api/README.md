@@ -62,7 +62,7 @@ Example:
 curl <api-endpoint>/polls/search/?keywords=Guitar&keywords=music
 ```
 
-This query will give you polls that either contain the work _guitar_ or _music_.
+This query will give you polls that either contain the word _guitar_ or _music_.
 
 _limit:_ The limit parameter will limit the amount of polls the API sends to you. The overall maximum is 50 polls.
 
