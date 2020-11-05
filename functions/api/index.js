@@ -17,7 +17,7 @@ const pollPath = 'poll'
 // Instantiate an express object
 var app = express();
 
-app.use(cors);
+app.use(cors());
 
 function extractLimit(req) {
      // Set a default limit
