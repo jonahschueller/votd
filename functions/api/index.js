@@ -80,7 +80,7 @@ app.use('/polls/latest', (req, res) => {
      // Order and limit the data
      ref.orderBy('timestamp').limit(limit).get()
      .then((polls) => { // Send back the data to the client
-          return res.status(200).send({
+          return res.send({
                "polls": polls.docs.map( doc => preparePoll(doc) )
           });
      }).catch((err) => { // In case of an error send back an error.
@@ -97,7 +97,7 @@ app.use('/polls/popular', (req, res) => {
      
      ref.orderBy('votes').limit(limit).get() 
      .then((polls) => { // Send back the data to the client
-          return res.status(200).send({
+          return res.send({
                "polls": polls.docs.map( doc => preparePoll(doc) )
           });
      }).catch((err) => { // In case of an error send back an error.
