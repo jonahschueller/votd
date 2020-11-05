@@ -17,14 +17,20 @@ class Home extends Component {
 
      componentDidMount() {
           // Fetch the latest polls
-          fetch(`${apiURL}/polls/latest/`)
-          .then(res => res.json()) // Convert the result to json
+          console.log(`${apiURL}/polls/latest/`);
+          fetch(`${apiURL}/polls/latest/`, { mode: 'no-cors' })
+          .then(res => {
+               return res.json()
+          }) // Convert the result to json
           .then(data => {
-               this.setState({latestPolls: data.polls }) // Set the state
-          }).catch(err => console.log(err)) // Console log any errros
+               console.log('got data')
+               return this.setState({latestPolls: data.polls }) // Set the state
+          }).catch(err => {
+               console.error(err)
+          }) // Console log any errros
 
           // Fetch the most popular polls
-          fetch(`${apiURL}/polls/popular/`)
+          fetch(`${apiURL}/polls/popular/`, { mode: 'no-cors' })
           .then(res => res.json()) // Convert the result to json
           .then(data => {
                console.log(data);
