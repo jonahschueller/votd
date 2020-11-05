@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './PollPreview.css';
 
 class PollPreview extends React.Component {
 
@@ -17,10 +18,8 @@ class PollPreview extends React.Component {
 
      render() {
           return (
-               <div class="card">
-                    <div class="card-body">
-                         <h5 class="card-title">{this.state.data.title}</h5>
-                    </div>
+               <div class="pollPreview">
+                    <h5>{this.state.data.title}</h5>
                </div>
           );
      }

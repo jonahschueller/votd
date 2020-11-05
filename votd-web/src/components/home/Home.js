@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import PollPreview from '../common/PollPreview'
+import './Home.css'
 
 const apiURL = 'https://us-central1-code-it-292909.cloudfunctions.net/votd-rest-API'
 
@@ -39,24 +40,29 @@ class Home extends Component {
      }
 
      render() {
-          return (<div>
+          return (
+          <div class="home">
                <div>
-                    <p>Latest</p>
+                    <p class="section-title">Latest polls</p>
+                    <div class="section">
                     {
                          this.state.latestPolls.map(poll => {
                               return (<PollPreview poll={poll}></PollPreview>);
                               // return (<p>fhow</p>);
                          })
                     }
+                    </div>
                </div>
                <div>
-                    <p>Popular</p>
+                    <p class="section-title">Popular polls</p>
+                    <div class="section">
                     {
                          this.state.popularPolls.map(poll => {
                               return (<PollPreview poll={poll}></PollPreview>);
                               // return (<p>fhow</p>);
                          })
                     }
+                    </div>
                </div>
 
           </div>);

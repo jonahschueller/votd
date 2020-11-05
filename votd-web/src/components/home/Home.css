@@ -1,0 +1,25 @@
+.home {
+     margin: 40px;
+}
+
+.section-title {
+     text-align: left;
+     font-size: 20px;
+     font-weight: bold;
+}
+
+.section {
+     display: flex;
+     flex-flow: row wrap;
+     width: 100%;
+}
+
+.section div {
+     border-radius: 12px;
+     background-color: white;
+     box-shadow: 0px 0px 10px rgb(196, 196, 196);
+     margin: 10px;
+     padding: 10px;
+     width: 15%;
+     height: 150px;
+}
