@@ -1,9 +1,10 @@
 const Firestore = require('@google-cloud/firestore');
+const cors = require('cors');
 const express = require('express');
 
 const firestore = new Firestore({
   projectId: 'code-it-292909',
-  keyFilename: '/Users/jonahschueller/.config/gcloud/code-it-292909-abacc04d59f0.json',
+//   keyFilename: '/Users/jonahschueller/.config/gcloud/code-it-292909-abacc04d59f0.json',
 });
 
 // Firestore collection paths
@@ -15,6 +16,8 @@ const pollPath = 'poll'
 
 // Instantiate an express object
 var app = express();
+
+app.use(cors);
 
 function extractLimit(req) {
      // Set a default limit
