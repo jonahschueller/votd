@@ -18,7 +18,7 @@ class Home extends Component {
      componentDidMount() {
           // Fetch the latest polls
           console.log(`${apiURL}/polls/latest/`);
-          fetch(`${apiURL}/polls/latest/`, { mode: 'no-cors' })
+          fetch(`${apiURL}/polls/latest/`, { mode: 'cors' })
           .then(res => {
                return res.json()
           }) // Convert the result to json
@@ -30,7 +30,7 @@ class Home extends Component {
           }) // Console log any errros
 
           // Fetch the most popular polls
-          fetch(`${apiURL}/polls/popular/`, { mode: 'no-cors' })
+          fetch(`${apiURL}/polls/popular/`, { mode: 'cors' })
           .then(res => res.json()) // Convert the result to json
           .then(data => {
                console.log(data);
@@ -44,8 +44,8 @@ class Home extends Component {
                     <p>Latest</p>
                     {
                          this.state.latestPolls.map(poll => {
-                              // return (<PollPreview poll={poll}></PollPreview>);
-                              return (<p>fhow</p>);
+                              return (<PollPreview poll={poll}></PollPreview>);
+                              // return (<p>fhow</p>);
                          })
                     }
                </div>
@@ -53,8 +53,8 @@ class Home extends Component {
                     <p>Popular</p>
                     {
                          this.state.popularPolls.map(poll => {
-                              // return (<PollPreview poll={poll}></PollPreview>);
-                              return (<p>fhow</p>);
+                              return (<PollPreview poll={poll}></PollPreview>);
+                              // return (<p>fhow</p>);
                          })
                     }
                </div>

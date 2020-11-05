@@ -19,7 +19,7 @@ class PollPreview extends React.Component {
           return (
                <div class="card">
                     <div class="card-body">
-                         <h5 class="card-title">{"hkgjf"}</h5>
+                         <h5 class="card-title">{this.state.data.title}</h5>
                     </div>
                </div>
           );
