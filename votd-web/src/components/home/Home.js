@@ -43,8 +43,8 @@ class Home extends Component {
           return (
           <div class="home">
                <div>
-                    <p class="section-title">Latest polls</p>
                     <div class="section">
+                         <p class="section-title">Latest polls</p>
                     {
                          this.state.latestPolls.map(poll => {
                               return (<PollPreview poll={poll}></PollPreview>);
@@ -54,8 +54,8 @@ class Home extends Component {
                     </div>
                </div>
                <div>
-                    <p class="section-title">Popular polls</p>
                     <div class="section">
+                         <p class="section-title">Popular polls</p>
                     {
                          this.state.popularPolls.map(poll => {
                               return (<PollPreview poll={poll}></PollPreview>);
