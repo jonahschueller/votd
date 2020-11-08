@@ -26,4 +26,18 @@
      background-color: white;
      border-radius: 6px;
      border-top: 4px solid coral;
+     box-shadow: 0px 0px 10px 1px rgba(219, 219, 219, 0.2)
+}
+
+
+@media (max-width: 730px) {
+     .card {
+          width: 90%;
+     }
+}
+
+@media (min-width: 1500px) {
+     .card {
+          width: 1005px;
+     }
 }

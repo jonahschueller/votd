@@ -5,15 +5,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  background-color: #F3F3F7FF;
 }
 
 .main {
   padding: 5rem 0;
   flex: 1;
+  margin: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
 }
 
@@ -86,21 +88,22 @@
 
 .card {
   margin: 1rem;
-  /* flex-basis: 45%; */
+  background-color: white;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  /* min-width: 250px; */
-  transition: color 0.15s ease, border-color 0.15s ease;
+  border-radius: 6px;
+  border-top: 0px solid transparent;
+  transition: all 0.15s ease;
+  box-shadow: 0px 0px 10px 1px rgba(219, 219, 219, 0.2)
 }
 
 .card:hover,
 .card:focus{
-  color: #0070f3;
-  border-color: #0070f3;
+  color: coral;
+  padding-top: calc(1.5rem - 4px);
+  border-top: 4px solid coral;
   cursor: pointer;
 }
 
