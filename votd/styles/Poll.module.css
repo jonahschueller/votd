@@ -1,0 +1,29 @@
+.container {
+     justify-content: center;
+     min-height: 100vh;
+     padding: 1rem;
+     background-color: #F3F3F7FF;
+}
+
+.title {
+     text-align: center;
+     font-size: 2rem;
+     margin: 1rem 2rem;
+}
+
+.description {
+     text-align: center;
+     font-size: 0.8rem;
+     margin: 0.5rem 2rem;
+     color: #3C3C4399;
+     font-weight: 500;
+}
+
+.card {
+     width: 70%;
+     margin: auto;
+     padding: 1rem;
+     background-color: white;
+     border-radius: 6px;
+     border-top: 4px solid coral;
+}
