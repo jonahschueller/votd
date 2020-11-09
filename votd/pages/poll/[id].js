@@ -16,8 +16,14 @@ const Poll = ({poll}) => {
           <div className={styles.card}>
                <h3 className={styles.title}>{poll.data.title}</h3>
 
-          <h5 className={styles.description}>{date(poll)}</h5>
+               <h5 className={styles.description}>{date(poll)}</h5>
 
+
+               <div className={styles.keywordGrid}>
+                    {poll.data.keywords.map((keyword) => {
+                         return <h4 className={styles.keyword}>{keyword}</h4>;
+                    })}
+               </div>
           </div>
      </div>);
 }

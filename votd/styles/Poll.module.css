@@ -25,9 +25,32 @@
      padding: 1rem;
      background-color: white;
      border-radius: 6px;
-     border-top: 4px solid coral;
+     border-top: 4px solid #0070f3;
      box-shadow: 0px 0px 10px 1px rgba(219, 219, 219, 0.2)
 }
+
+
+.keywordGrid {
+     display: flex;
+     margin: -6px;
+     justify-content: center;
+     margin-top: 0.5rem;
+     width: 100%;
+}
+
+.keywordGrid h4 { 
+     margin: 6px;
+}
+
+.keyword {
+     margin: 0;
+     font-size: 0.6rem;
+     background-color: #0070f333;
+     color: #3C3C4399;
+     padding: 0.4rem 0.6rem;
+     border-radius: 0.8rem;
+}
+   
 
 
 @media (max-width: 730px) {
