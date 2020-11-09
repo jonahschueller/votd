@@ -66,6 +66,11 @@
   font-size: 1.5rem;
 }
 
+.pollTitle {
+  margin-left: 0;
+}
+
+
 .code {
   background: #fafafa;
   border-radius: 5px;
@@ -77,9 +82,6 @@
 
 .grid {
   display: grid;
-  /* align-items: top;
-  justify-content: flex-start;
-  flex-wrap: wrap; */
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   margin-top: 0.5rem;
@@ -91,25 +93,26 @@
   background-color: white;
   padding: 1.5rem;
   text-align: left;
-  color: inherit;
+  color: black;
   text-decoration: none;
   border-radius: 6px;
-  border-top: 0px solid transparent;
+  border-top: 4px solid;
+  border-color: inherit;
   transition: all 0.15s ease;
-  box-shadow: 0px 0px 10px 1px rgba(219, 219, 219, 0.2)
+  box-shadow: 0px 0px 10px 1px rgba(206, 206, 206, 0.2)
 }
 
 .card:hover,
 .card:focus{
-  color: coral;
-  padding-top: calc(1.5rem - 4px);
-  border-top: 4px solid coral;
+  color: inherit;
   cursor: pointer;
 }
 
-.card h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.pollDescription {
+  margin: 0 0 0.7rem 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #3C3C4399;
 }
 
 .card h5 {
@@ -126,6 +129,28 @@
 
 .logo {
   height: 1em;
+}
+
+.keywordGrid {
+  display: flex;
+  margin: -6px;
+  /* gap: 1rem; */
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.keywordGrid h4 { 
+  margin: 6px;
+}
+
+.keyword {
+  margin: 0;
+  font-size: 0.5rem;
+  color: #3C3C4399;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.8rem;
+  background-color: #e4e4e499;
 }
 
 @media (max-width: 730px) {
