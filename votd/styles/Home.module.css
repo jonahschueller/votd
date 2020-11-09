@@ -153,6 +153,10 @@
   border-radius: 0.8rem;
 }
 
+.keyword:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 730px) {
   .grid {
     width: 100%;

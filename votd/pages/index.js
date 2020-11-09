@@ -80,7 +80,11 @@ class Home extends React.Component {
                     </h4>
                     <div className={styles.keywordGrid}>
                       {poll.data.keywords.map((keyword) => {
-                        return <h4 className={styles.keyword}>{keyword}</h4>;
+                        return (
+                          <Link href={`/search/?keyword=${keyword}`}>
+                               <h4 className={styles.keyword}>{keyword}</h4>
+                          </Link>
+                          );
                       })}
                     </div>
                   </div>

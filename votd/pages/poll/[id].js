@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import styles from '../../styles/Poll.module.css'
 
@@ -21,7 +22,11 @@ const Poll = ({poll}) => {
 
                <div className={styles.keywordGrid}>
                     {poll.data.keywords.map((keyword) => {
-                         return <h4 className={styles.keyword}>{keyword}</h4>;
+                         return (
+                         <Link href={`/search/?keyword=${keyword}`}>
+                              <h4 className={styles.keyword}>{keyword}</h4>
+                         </Link>
+                         );
                     })}
                </div>
           </div>
