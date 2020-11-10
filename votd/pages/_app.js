@@ -1,8 +1,12 @@
 import '../styles/globals.css'
+import NavigationBar from '../components/navigation'
 
 function MyApp({ Component, pageProps }) {
   return (
-      <Component {...pageProps} />
+    <div>
+      <NavigationBar/>
+      <Component {...pageProps}/>
+    </div>
   );
 }
 

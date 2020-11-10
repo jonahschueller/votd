@@ -2,6 +2,7 @@
      justify-content: center;
      min-height: 100vh;
      padding: 1rem;
+     padding-top: calc(80px + 1rem);
      background-color: #F3F3F7FF;
 }
 

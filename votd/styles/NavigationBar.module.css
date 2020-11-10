@@ -1,0 +1,34 @@
+.container {
+     display: flex;
+     justify-content: flex-start;
+     padding: 0.5rem 1.5rem;
+     position: fixed;
+     background-color: white;
+     width: 100%;
+     height: 80;
+     border-bottom: 0.5px rgba(128, 128, 128, 0.658) solid;
+}
+
+.item {
+     margin-right: 1rem;
+     font-weight: 400;
+     font-size: 1rem;
+     color: #3b3b3bee;
+     transition: all 0.15s ease-in;
+}
+
+.item:hover {
+     cursor: pointer;
+     color: black;
+}
+
+.logo {
+     margin-right: 1.5rem;
+     color: #0070f3;
+     transition: all 0.15s ease-in;
+}
+
+.logo:hover {
+     cursor: pointer;
+     color: black;
+}
