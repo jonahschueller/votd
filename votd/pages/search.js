@@ -1,9 +1,13 @@
 import React from 'react'
-
+import styles from "../styles/Search.module.css";
 
 const Search = () => {
      return (
-          <h4>Search</h4>
+          <div className={styles.container}>
+               <div className={styles.search}>
+                    <input type="text" placeholder="Search..." className={styles.searchField}/>
+               </div>
+          </div>
      );
 }
 

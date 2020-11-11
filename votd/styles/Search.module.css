@@ -1,0 +1,32 @@
+.container {
+     min-height: 100vh;
+     padding: 0 0.5rem;
+     padding-top: 80px;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     align-items: flex-start;
+     background-color: #F3F3F7FF;
+     width: 100%;
+}
+
+.search {
+     margin: 0 auto;
+     margin-top: 3rem;
+     width: 50%;
+}
+
+.searchField {
+     font-size: 1.5rem;
+     border-radius: 3rem;
+     border-width: 0px;
+     padding: 1rem 1.5rem;
+     box-shadow: 0px 0px 10px 1px rgba(206, 206, 206, 0.2);
+     transition: box-shadow 0.2s ease-in-out;
+     width: 100%;
+}
+
+.searchField:focus {
+     outline: none;
+     box-shadow: 0px 0px 10px 3px rgba(184, 184, 184, 0.2)
+}
