@@ -15,7 +15,6 @@ class Home extends React.Component {
     let resPopular = await fetch(`${apiURL}/polls/popular`)
     let popularPolls = await resPopular.json()
 
-
     return {
       latest: latestPolls.polls.reverse(),
       popular: popularPolls.polls
