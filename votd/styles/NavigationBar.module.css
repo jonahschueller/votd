@@ -10,36 +10,34 @@
 }
 
 .item {
+     float: left;
      position: relative;
      margin-right: 1rem;
+     margin-left: 1rem;
      display: flex;
      align-items: center;
      justify-content: center;
      font-weight: 400;
      font-size: 1rem;
-     width: 5rem;
+     /* width: 6rem; */
      color: #3b3b3bee;
-     transition: all 3s ease-in;
-}
-
-.itemText {
-     /* transition: all 0.1s ease-in; */
+     /* transition: all 0.15s ease-in; */
 }
 
 .itemText, .overlay {
-     transition: all 0.15s ease-in;
-     position: absolute;
+     transition: color 0.15s ease-in;
+     transition: opacity 0.15s ease-in;
      margin: auto;
-     transition: all 0.2s ease-in;
 }
 
 .overlay {
      color: #0070f3;
+     margin-right: 0.5rem;
 }
 
 .item:hover {
      cursor: pointer;
-     color: black;
+     color: #0070f3;
 }
 
 .item:hover .overlay {
@@ -51,17 +49,14 @@
      font-size: large;    
 }
 
-.item:hover .itemText {
-     opacity: 0;
-}
-
-.logo {
-     margin-right: 1.5rem;
-     color: #0070f3;
-     transition: all 0.15s ease-in;
-}
-
-.logo:hover {
+.profile {
+     display: flex;
+     align-items: center;
+     justify-content: flex-end;
+     margin-left: auto;
      cursor: pointer;
-     color: black;
+}
+
+.profile:hover {
+     color: #0070f3;
 }

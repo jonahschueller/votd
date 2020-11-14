@@ -11,26 +11,32 @@ const NavigationBar = () => {
                </Link>
                <Link href="/">
                     <div className={styles.item}>
-                         <h4 className={styles.itemText}>Home</h4>
                          <div className={styles.overlay}>
-                              <i class="fas fa-home fa-lg"></i>   
+                              <i class="fas fa-home fa-sm"></i>   
                          </div>
+                         <h4 className={styles.itemText}>Home</h4>
                     </div>
                </Link>
                <Link href="/search">
                     <div className={styles.item}>
-                         <h4 className={styles.itemText}>Search</h4>
                          <div className={styles.overlay}>
-                              <i class="fas fa-search fa-lg"></i>
+                              <i class="fas fa-search fa-sm"></i>
                          </div>
+                         <h4 className={styles.itemText}>Search</h4>
                     </div>
                </Link>
                <Link href="/">
                <div className={styles.item}>
-                         <h4 className={styles.itemText}>Add a poll</h4>
                          <div className={styles.overlay}>
-                              <i class="fas fa-plus fa-lg"></i>
+                              <i class="fas fa-plus fa-sm"></i>
                          </div>
+                         <h4 className={styles.itemText}>Add a poll</h4>
+                    </div>
+               </Link>
+
+               <Link href="/profile">
+                    <div className={styles.profile}>
+                         <i  class="fas fa-user fa-lg"></i>
                     </div>
                </Link>
           </div>
