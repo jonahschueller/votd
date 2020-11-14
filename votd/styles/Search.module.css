@@ -1,0 +1,110 @@
+.container {
+     min-height: 100vh;
+     padding: 0 0.5rem;
+     padding-top: 80px;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     align-items: flex-start;
+     background-color: #F3F3F7FF;
+     width: 100%;
+}
+
+.search {
+     margin: 0 auto;
+     margin-top: 3rem;
+     width: 50%;
+}
+
+.searchField {
+     font-size: 1.5rem;
+     border-radius: 3rem;
+     border-width: 0px;
+     padding: 1rem 1.5rem;
+     box-shadow: 0px 0px 10px 1px rgba(206, 206, 206, 0.2);
+     transition: box-shadow 0.2s ease-in-out;
+     width: 100%;
+}
+
+.searchField:focus {
+     outline: none;
+     box-shadow: 0px 0px 10px 3px rgba(184, 184, 184, 0.2)
+}
+
+
+.grid {
+     display: grid;
+     gap: 1rem;
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+     margin-top: 0.5rem;
+     width: 100%;
+   }
+   
+   .card {
+     margin: 1rem;
+     background-color: white;
+     padding: 1.5rem;
+     text-align: left;
+     color: black;
+     text-decoration: none;
+     border-radius: 6px;
+     border-top: 4px solid;
+     border-color: #0070f3;
+     transition: all 0.15s ease;
+     box-shadow: 0px 0px 10px 1px rgba(206, 206, 206, 0.2)
+   }
+   
+   .card:hover,
+   .card:focus{
+     color: #0070f3;
+     cursor: pointer;
+   }
+   
+   .pollDescription {
+     margin: 0 0 0.7rem 0;
+     font-size: 0.8rem;
+     font-weight: 500;
+     color: #3C3C4399;
+   }
+   
+   .card h5 {
+     margin: 0 0 0.7rem 0;
+     font-size: 0.6rem;
+     color: #3C3C4399;
+   }
+   
+   .card p {
+     margin: 0;
+     font-size: 1.25rem;
+     line-height: 1.5;
+   }
+   
+   .logo {
+     height: 1em;
+   }
+   
+   .keywordGrid {
+     display: flex;
+     margin: -6px;
+     /* gap: 1rem; */
+     /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+     margin-top: 0.5rem;
+     width: 100%;
+   }
+   
+   .keywordGrid h4 { 
+     margin: 6px;
+   }
+   
+   .keyword {
+     margin: 0;
+     font-size: 0.5rem;
+     background-color: #0070f333;
+     color: #3C3C4399;
+     padding: 0.4rem 0.6rem;
+     border-radius: 0.8rem;
+   }
+   
+   .keyword:hover {
+     cursor: pointer;
+   }
