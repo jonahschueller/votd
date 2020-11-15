@@ -42,21 +42,23 @@ class Home extends React.Component {
           {
             this.props.latest.map(poll => {
               return (
-                <Link href={`poll/${poll.id}`}>
-                  <div className={styles.card}>
-                    <h5>{this.date(poll)}</h5>
-                    <h3 className={[styles.title, styles.pollTitle]}>
-                      {poll.data.title}
-                    </h3>
-                    <h4 className={styles.pollDescription}>
-                      {poll.data.votes} votes
-                    </h4>
-                    <div className={styles.keywordGrid}>
-                      {poll.data.keywords.map((keyword) => {
-                        return <h4 className={styles.keyword}>{keyword}</h4>;
-                      })}
+                <Link as={`poll/${poll.id}`} href='poll/[id]'>
+                  <a>
+                    <div className={styles.card}>
+                      <h5>{this.date(poll)}</h5>
+                      <h3 className={[styles.title, styles.pollTitle]}>
+                        {poll.data.title}
+                      </h3>
+                      <h4 className={styles.pollDescription}>
+                        {poll.data.votes} votes
+                      </h4>
+                      <div className={styles.keywordGrid}>
+                        {poll.data.keywords.map((keyword) => {
+                          return <h4 className={styles.keyword}>{keyword}</h4>;
+                        })}
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </Link>
               );
             })
@@ -68,25 +70,27 @@ class Home extends React.Component {
           {
             this.props.popular.map(poll => {
               return (
-                <Link href={`poll/${poll.id}`}>
-                  <div className={styles.card}>
-                    <h5>{this.date(poll)}</h5>
-                    <h3 className={[styles.title, styles.pollTitle]}>
-                      {poll.data.title}
-                    </h3>
-                    <h4 className={styles.pollDescription}>
-                      {poll.data.votes} votes
-                    </h4>
-                    <div className={styles.keywordGrid}>
-                      {poll.data.keywords.map((keyword) => {
-                        return (
-                          <Link href={`/search/?keyword=${keyword}`}>
-                               <h4 className={styles.keyword}>{keyword}</h4>
-                          </Link>
-                          );
-                      })}
+                <Link as={`poll/${poll.id}`} href='poll/[id]'>
+                  <a>
+                    <div className={styles.card}>
+                      <h5>{this.date(poll)}</h5>
+                      <h3 className={[styles.title, styles.pollTitle]}>
+                        {poll.data.title}
+                      </h3>
+                      <h4 className={styles.pollDescription}>
+                        {poll.data.votes} votes
+                      </h4>
+                      <div className={styles.keywordGrid}>
+                        {poll.data.keywords.map((keyword) => {
+                          return (
+                            <Link href={`/search/?keyword=${keyword}`}>
+                                <h4 className={styles.keyword}>{keyword}</h4>
+                            </Link>
+                            );
+                        })}
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </Link>
               );
             })

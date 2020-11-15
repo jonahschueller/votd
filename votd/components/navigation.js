@@ -30,7 +30,7 @@ const NavigationBar = () => {
                          <div className={styles.overlay}>
                               <i class="fas fa-plus fa-sm"></i>
                          </div>
-                         <h4 className={styles.itemText}>Add a poll</h4>
+                         <h4 className={styles.itemText}>New poll</h4>
                     </div>
                </Link>
 
