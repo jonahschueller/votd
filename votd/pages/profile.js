@@ -4,6 +4,10 @@ import styles from '../styles/Poll.module.css'
 
 const Profile = () => {
 
+     if (fire.auth().currentUser == null) {
+          
+     }
+
      const signout = () => {
           fire.signout()
      }
