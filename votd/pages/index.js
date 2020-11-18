@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from 'react'
 import styles from '../styles/Home.module.css'
 
-const apiURL = 'https://us-central1-code-it-292909.cloudfunctions.net/votd-rest-API'
+const apiURL = `${process.env.NEXT_PUBLIC_apiUrl}`
 
 
 class Home extends React.Component {

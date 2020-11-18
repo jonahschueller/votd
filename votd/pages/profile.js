@@ -2,10 +2,16 @@ import React from 'react'
 import fire from '../config/firebase-config'
 import styles from '../styles/Poll.module.css'
 
+import useAuth from '../auth/fire-auth'
+
 const Profile = () => {
 
-     if (fire.auth().currentUser == null) {
-          
+     const user = useAuth()
+
+     if (user == null) {
+          return (
+               <h3>Loading...</h3>
+          )
      }
 
      const signout = () => {
