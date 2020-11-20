@@ -4,18 +4,13 @@ import Link from "next/link";
 
 const apiURL = 'https://us-central1-code-it-292909.cloudfunctions.net/votd-rest-API'
 
-const Search = () => {
+const Search = (props) => {
 
-     const [result, setResult] = useState({ polls: null })
+     const [result, setResult] = useState({ polls: props.polls })
+     const [searchQuery, setSearchQuery] = useState(props.keyword)
 
-     const onSearch = (event) => {
-          if (event.key != 'Enter') {
-               return
-          }
-
-          const query = event.target.value
-          console.log(`${apiURL}/polls/search?keywords=${query}`)
-          fetch(`${apiURL}/polls/search?keywords=${query}`)
+     const search = (keyword) => {
+          fetch(`${apiURL}/polls/search?keywords=${keyword}`)
           .then(res => {
                res.json().then(data => {
                     setResult({
@@ -29,6 +24,17 @@ const Search = () => {
           })
      }
 
+     const onSearch = (event) => {
+          if (event.key != 'Enter') {
+               return
+          }
+
+          const query = event.target.value
+
+          setSearchQuery(query)
+          search(query);
+     }
+
      const date = (poll) => {
           let date = new Date(poll.data.timestamp._seconds * 1000);
     
@@ -40,11 +46,12 @@ const Search = () => {
                <div className={styles.search}>
                     <input 
                          type="text" 
+                         value={searchQuery}
                          placeholder="Search..." 
                          className={styles.searchField}
                          onKeyDown={onSearch}/>
                </div>
-               { result.polls &&
+               { result.polls && result.polls.length != 0 &&
                     <div>
                          <h4 className={styles.title}>Latest polls</h4>
                          <div className={styles.grid}>
@@ -77,5 +84,22 @@ const Search = () => {
      );
 }
 
+export async function getServerSideProps(context) {
+     const query = context.query
+
+     if (query == null) {
+          return { polls: []}
+     }
+
+     console.log(query.keyword)
+     let res = await fetch(`${apiURL}/polls/search?keywords=${query.keyword}`)
+     let poll = await res.json()
+
+     return { props: {
+               keyword: query.keyword,
+               polls: poll.polls 
+          }
+     }
+}
 
 export default Search
