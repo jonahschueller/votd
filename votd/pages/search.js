@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "../styles/Search.module.css";
 import Link from "next/link";
 
-const apiURL = 'https://us-central1-code-it-292909.cloudfunctions.net/votd-rest-API'
+const apiURL = `${process.env.NEXT_PUBLIC_apiUrl}`
 
 const Search = (props) => {
 
