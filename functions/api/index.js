@@ -4,7 +4,7 @@ const express = require('express');
 
 const firestore = new Firestore({
   projectId: 'code-it-292909',
-//   keyFilename: '/Users/jonahschueller/.config/gcloud/code-it-292909-abacc04d59f0.json',
+//   keyFilename: process.env.key_file,
 });
 
 // Firestore collection paths

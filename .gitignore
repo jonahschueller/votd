@@ -1,2 +1,4 @@
 # Ignore all node modules
 node_modules/
+
+.env
