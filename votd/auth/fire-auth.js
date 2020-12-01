@@ -1,55 +1,58 @@
 import React, { useContext, useState, useEffect, createContext, useReducer } from 'react'
-import fire from '../config/firebase-config'
+import firebase from '../config/firebase-config'
 
 // Create a context for the firebase user
-const UserContext = createContext({
-     user: null,
-     signout: () => {}
-});
+const UserContext = createContext();
+
+export function AuthProvider({children}) {
+     const auth = useProvideAuth()
+
+     return <UserContext.Provider value={auth}>{children}</UserContext.Provider>
+}
+
+export function useAuth() {
+     return useContext(UserContext)
+}
 
 // Auth Hook
-const useAuth = () => {
-     const [state, setState] = useState(() => {
-          const user = fire.auth().currentUser;
-          return {
-               initalizing: !user,
-               user: user,
-               signout: () => {}
-          }
-     })
-
-     const signout = () => {
-          console.log('sig')
-          fire.auth().signOut()
-     }
+const useProvideAuth = () => {
+     const [user, setUser] = useState(null)
 
      // Handler for auth state changes
      function onChange(user) {
           console.log('Update')
-          setState({
-               initalizing: false,
-               user: user,
-               signout: () => {}
-          })
+          setUser(user)
+     }
+
+     const signIn = () => {
+          console.log('Log in!')
+          return firebase.auth().signInAnonymously()
+                    .then((res) => setUser(res.user))
+     }
+
+     const signOut = () => {
+          console.log('Log out!')
+          return firebase.auth().signOut()
+                    .then(() => setUser(false))
      }
 
      // React to any reloads
      useEffect(() => {
           // Subscribe to any  state changes
-          const unsubscribe = fire.auth().onAuthStateChanged(onChange)
-
+          const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+               console.log(`Auth state changed: ${user}`)
+               setUser(user)
+          })
+          console.log('sub')
           // This will get called for cleanup
-          return () => unsubscribe()
+          // return () => unsubscribe()
      }, [])
 
      return {
-          state,
-          signout
+          user,
+          signIn,
+          signOut
      }
 }
 
-
-
-export { useAuth }
-export default UserContext
 

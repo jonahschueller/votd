@@ -1,30 +1,32 @@
 import React, { useContext } from 'react'
 import styles from '../styles/Poll.module.css'
-import UserContext from '../auth/fire-auth'
+import { useAuth } from '../auth/fire-auth'
 
 const Profile = () => {
-     const user = useContext(UserContext)
+     const user = useAuth()
      
-     if (user == null) {
+     console.log(user)
+
+     if (user.user == null) {
           return (
                <div className={styles.container}>
                     <div className={styles.card}>
                     <h4 className={styles.title}>Profile</h4>
                     <p>You are logged out!</p>
-                    <button>
+                    <button onClick={() => user.signIn()}>
                          Login
                     </button>
                </div>
           </div>
-          )
+          );
      }
 
      return (
           <div className={styles.container}>
                <div className={styles.card}>
                     <h4 className={styles.title}>Profile</h4>
-
-                    <button onClick={user.user.signout()}>
+                    <p>You are logged in! {user.user.uid} f</p>
+                    <button onClick={() => user.signOut()}>
                          Logout
                     </button>
                </div>

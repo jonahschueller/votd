@@ -1,11 +1,9 @@
 import '../styles/globals.css'
 import NavigationBar from '../components/navigation'
 import Head from 'next/head'
-import UserContext from '../auth/fire-auth'
-import { useAuth } from '../auth/fire-auth'
+import { AuthProvider } from '../auth/fire-auth'
 
 function MyApp({ Component, pageProps }) {
-  const user = useAuth();
   console.log('reload')
   return (
     <div>
@@ -13,9 +11,9 @@ function MyApp({ Component, pageProps }) {
       <script src="https://kit.fontawesome.com/4b2e2ad0a4.js" crossorigin="anonymous"></script>
       </Head>
       <NavigationBar/>
-      <UserContext.Provider value={{user: user}}>
+      <AuthProvider>
         <Component {...pageProps}/>
-      </UserContext.Provider>
+      </AuthProvider>
     </div>
   );
 }
