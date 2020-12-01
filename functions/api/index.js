@@ -1,9 +1,10 @@
 const Firestore = require('@google-cloud/firestore');
+const cors = require('cors');
 const express = require('express');
 
 const firestore = new Firestore({
   projectId: 'code-it-292909',
-  keyFilename: '/Users/jonahschueller/.config/gcloud/code-it-292909-abacc04d59f0.json',
+//   keyFilename: process.env.key_file,
 });
 
 // Firestore collection paths
@@ -15,6 +16,8 @@ const pollPath = 'poll'
 
 // Instantiate an express object
 var app = express();
+
+app.use(cors());
 
 function extractLimit(req) {
      // Set a default limit
@@ -80,7 +83,7 @@ app.use('/polls/latest', (req, res) => {
      // Order and limit the data
      ref.orderBy('timestamp').limit(limit).get()
      .then((polls) => { // Send back the data to the client
-          return res.status(200).send({
+          return res.send({
                "polls": polls.docs.map( doc => preparePoll(doc) )
           });
      }).catch((err) => { // In case of an error send back an error.
@@ -97,7 +100,7 @@ app.use('/polls/popular', (req, res) => {
      
      ref.orderBy('votes').limit(limit).get() 
      .then((polls) => { // Send back the data to the client
-          return res.status(200).send({
+          return res.send({
                "polls": polls.docs.map( doc => preparePoll(doc) )
           });
      }).catch((err) => { // In case of an error send back an error.
