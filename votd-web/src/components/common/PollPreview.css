@@ -1,0 +1,31 @@
+.pollPreview {
+     border-radius: 25px;
+     background-color: #F2F2F7FF;
+     box-shadow: 0px 0px 10px rgb(121, 121, 121);
+     margin: 10px;
+     padding: 10px;
+     width: 15%;
+     height: 150px;
+}
+
+h5 {
+     color: #3C3C4399;
+     font-weight: 500;
+     text-align: left;
+     margin-top: 5px;
+     margin-bottom: 0px;
+}
+
+h4 {
+     text-align: left;
+     margin-top: 5px;
+     margin-bottom: 0px;
+}
+
+.date {
+     font-weight: medium;
+}
+
+.pollPreview:hover {
+     box-shadow: 0px 5px 10px rgb(221, 221, 221);
+}
