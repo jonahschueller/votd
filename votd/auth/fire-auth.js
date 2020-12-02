@@ -24,9 +24,15 @@ const useProvideAuth = () => {
           setUser(user)
      }
 
-     const signIn = () => {
+     const signInAnonymously = () => {
           console.log('Log in!')
           return firebase.auth().signInAnonymously()
+                    .then((res) => setUser(res.user))
+     }
+
+     const signInWithEmailAndPassword = (email, password) => {
+          console.log('Log in!')
+          return firebase.auth().signInWithEmailAndPassword(email, password)
                     .then((res) => setUser(res.user))
      }
 
@@ -50,7 +56,8 @@ const useProvideAuth = () => {
 
      return {
           user,
-          signIn,
+          signInAnonymously,
+          signInWithEmailAndPassword,
           signOut
      }
 }

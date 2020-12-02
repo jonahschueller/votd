@@ -1,40 +1,68 @@
 import React, { useState } from 'react';
-import fire from '../config/firebase-config';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Poll.module.css'
+import { useRouter } from 'next/router'
+import { useAuth } from '../auth/fire-auth';
 
 const Login = () => {
+     const user = useAuth()
+     const router = useRouter()
 
-     const [user, setUser] = useState(null);
+     const [email, setEmail] = useState(null)
+     const [password, setPassword] = useState(null)
 
      const login = () => {
-          fire.auth().signInAnonymously()
+          user.signInAnonymously()
           .then(res => {
-               setUser(res.user)
+               router.back()
           })
      }
 
-     const logout = () => {
-          fire.auth().signOut()
-          .then(res => {
-               setUser(false)
-          })
+     // If the user is logged in -> redirect him to the profile page
+     if (user.user) {
+          // Make sure we are in the browser
+          if (typeof window !== 'undefined') {
+               router.push('/profile')
+          }
+          
+          return <></>;
      }
 
-     if (user) {
-          return (
-               <div className={styles.container}>
-                    <p>You are logged in! Your id is {user.uid}</p>
-                    <button onClick={logout}>Logout</button>
-               </div>
-          );
-     }else {
-          return (
-               <div className={styles.container}>
-                    <p>You are logged out!</p>
+     const handleEmailChange = (event) => {
+          const val = event.value
+          setEmail(val)
+     }
+
+     const handlePasswordChange = (event) => {
+          const val = event.value
+          setPassword(val)
+     }
+
+     const handleSubmit = () => {
+
+     }
+
+     return (
+          <div className={styles.container}>
+               <div className={styles.card}>
+                    <h4 className={styles.title}>Login</h4>
+                    <form onSubmit={() => handleSubmit()}>
+                         <input 
+                              type="text" 
+                              name="Email"
+                              onChange={handleEmailChange}>
+                         </input>
+                         <input 
+                              type="password" 
+                              name="Password"
+                              onChange={handlePasswordChange}>
+                         </input>
+                         <button type="submit">Login</button>
+                    </form>
                     <button onClick={login}>Login</button>
                </div>
-          );
-     }
+          </div>
+     );
 };
 
 export default Login;
+
