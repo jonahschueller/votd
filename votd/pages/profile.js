@@ -15,14 +15,14 @@ const Profile = () => {
           if (typeof window !== 'undefined') {
                router.push('/login')
           }
-          
+
           return <></>;
      }
 
      return (
-          <div className={styles.container}>
-               <div className={styles.card}>
-                    <h4 className={styles.title}>Profile</h4>
+          <div className="container">
+               <div className="card">
+                    <h4 className="title">Profile</h4>
                     <p>You are logged in! {user.user.uid} f</p>
                     <button onClick={() => user.signOut()}>
                          Logout
