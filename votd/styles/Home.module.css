@@ -25,6 +25,7 @@
   height: 100px;
   border-top: 1px solid #eaeaea;
   display: flex;
+  color: white;
   justify-content: center;
   align-items: center;
 }
@@ -60,6 +61,7 @@
 .title,
 .description {
   text-align: left;
+  color: white
 }
 
 .description {
@@ -91,16 +93,16 @@
 
 .card {
   margin: 1rem;
-  background-color: white;
+  background-color: rgb(24, 24, 29);
   padding: 1.5rem;
   text-align: left;
-  color: black;
+  color: white;
   text-decoration: none;
   border-radius: 6px;
   border-top: 4px solid;
   border-color: #0070f3;
   transition: all 0.15s ease;
-  box-shadow: 0px 0px 10px 1px rgba(206, 206, 206, 0.2)
+  /* box-shadow: 0px 0px 10px 1px rgba(206, 206, 206, 0.2) */
 }
 
 .card:hover,
@@ -113,13 +115,13 @@
   margin: 0 0 0.7rem 0;
   font-size: 0.8rem;
   font-weight: 500;
-  color: #3C3C4399;
+  color: #cecece99;
 }
 
 .card h5 {
   margin: 0 0 0.7rem 0;
   font-size: 0.6rem;
-  color: #3C3C4399;
+  color: #cecece99;
 }
 
 .card p {
@@ -147,15 +149,16 @@
 
 .keyword {
   margin: 0;
-  font-size: 0.5rem;
-  background-color: #0070f333;
-  color: #3C3C4399;
+  font-size: 0.6rem;
+  background-color: #0071f39a;
+  color: #eeeeeed2;
   padding: 0.4rem 0.6rem;
   border-radius: 0.8rem;
 }
 
 .keyword:hover {
   cursor: pointer;
+  color: white;
 }
 
 @media (max-width: 730px) {

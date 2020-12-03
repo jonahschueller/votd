@@ -3,7 +3,7 @@
      justify-content: flex-start;
      padding: 0.5rem 1.5rem;
      position: fixed;
-     background-color: white;
+     background-color: rgb(24, 24, 29);
      width: 100%;
      height: 80;
      border-bottom: 0.5px rgba(128, 128, 128, 0.658) solid;
@@ -20,8 +20,16 @@
      font-weight: 400;
      font-size: 1rem;
      /* width: 6rem; */
-     color: #3b3b3bee;
+     color: #ffffffee;
      /* transition: all 0.15s ease-in; */
+}
+
+.logo {
+     color: white
+}
+
+.logo:hover {
+     cursor: pointer;
 }
 
 .itemText, .overlay {
@@ -55,6 +63,7 @@
      justify-content: flex-end;
      margin-left: auto;
      cursor: pointer;
+     color: white;
 }
 
 .profile:hover {
