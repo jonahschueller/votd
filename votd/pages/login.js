@@ -11,7 +11,7 @@ const Login = () => {
      const [email, setEmail] = useState(null)
      const [password, setPassword] = useState(null)
      const [error, setError] = useState(null)
-     console.log("fds")
+
      // If the user is logged in -> redirect him to the profile page
      if (user.user) {
           // Make sure we are in the browser
@@ -25,7 +25,6 @@ const Login = () => {
      const handleEmailChange = (event) => {
           const val = event.target.value
           setEmail(val)
-          console.log(val)
      }
 
      const handlePasswordChange = (event) => {
@@ -34,15 +33,14 @@ const Login = () => {
      }
 
      const handleSubmit = (event) => {
-          console.log(email)
-          console.log(password)
+          event.preventDefault()
           user.signInWithEmailAndPassword(email, password)
           .then(user => {
                router.back()
           }).catch(err => {
+               console.log(err)
                setError(err)
           })
-          event.preventDefault()
      }
 
      return (
@@ -53,7 +51,7 @@ const Login = () => {
                          <form onSubmit={event => handleSubmit(event)}>
                               <input
                                    className={`${styles.formItems} ${styles.formInput} `} 
-                                   type="email" 
+                                   type="text" 
                                    placeholder="Email"
                                    onChange={event => handleEmailChange(event)}>
                               </input>
@@ -64,12 +62,16 @@ const Login = () => {
                                    placeholder="Password"
                                    onChange={event => handlePasswordChange(event)}>
                               </input>
+
+                              { error != null ? 
+                              <p className={styles.errorMsg}>*Username or password is not correct!</p> 
+                              : <></> }
+
                               <button
                                    className={`${styles.formItems} ${styles.formSubmit} ${styles.formButton}`} 
                                    type="submit">
                                         Login
                               </button>
-                              <p>{error}</p>   
 
                               <Link href="/signup">
                                    <a

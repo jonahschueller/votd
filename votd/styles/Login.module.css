@@ -40,4 +40,9 @@
     text-align: center;
 }
 
-
+.errorMsg {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(224, 59, 59);
+}
