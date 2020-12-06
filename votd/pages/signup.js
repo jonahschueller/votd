@@ -48,7 +48,7 @@ const SignUp = () => {
                return
           }
 
-          user.signUpWithEmailAndPassword(email, password)
+          user.createUserWithEmailAndPassword(email, password)
           .then(user => {
                router.back()
           }).catch(err => {
