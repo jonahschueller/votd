@@ -147,20 +147,6 @@
   margin: 6px;
 }
 
-.keyword {
-  margin: 0;
-  font-size: 0.6rem;
-  background-color: #0071f39a;
-  color: #eeeeeed2;
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.8rem;
-}
-
-.keyword:hover {
-  cursor: pointer;
-  color: white;
-}
-
 @media (max-width: 730px) {
   .grid {
     width: 100%;

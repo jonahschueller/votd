@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import Head from 'next/head'
 import styles from '../../styles/Poll.module.css'
 
 const apiURL = `${process.env.NEXT_PUBLIC_apiUrl}`
@@ -13,18 +13,21 @@ const Poll = ({poll}) => {
      }
 
      return (
-     <div className={styles.container}>
-          <div className={styles.card}>
+     <div className="container">
+          <Head>
+               <title>{poll.data.title}</title>
+          </Head>
+          <div className="card">
                <h3 className={styles.title}>{poll.data.title}</h3>
 
                <h5 className={styles.description}>{date(poll)}</h5>
 
 
-               <div className={styles.keywordGrid}>
+               <div className="keywordGrid">
                     {poll.data.keywords.map((keyword) => {
                          return (
                          <Link href={`/search/?keyword=${keyword}`}>
-                              <h4 className={styles.keyword}>{keyword}</h4>
+                              <h4 className="keyword">{keyword}</h4>
                          </Link>
                          );
                     })}

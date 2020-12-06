@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styles from '../styles/Poll.module.css'
-import { useAuth } from '../auth/fire-auth'
+import { useAuth } from '../lib/auth/fire-auth'
 import { useRouter } from 'next/router'
 
 const Profile = () => {

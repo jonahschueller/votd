@@ -56,3 +56,17 @@ a {
   margin-top: 0.5rem;
   width: 100%;
 }
+
+.keyword {
+  margin: 0;
+  font-size: 0.6rem;
+  background-color: #0071f39a;
+  color: #eeeeeed2;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.8rem;
+}
+
+.keyword:hover {
+  cursor: pointer;
+  color: white;
+}

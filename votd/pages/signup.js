@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../styles/Login.module.css'
 import { useRouter } from 'next/router'
-import { useAuth } from '../auth/fire-auth'
+import { useAuth } from '../lib/auth/fire-auth'
 import Link from 'next/link'
 
 const SignUp = () => {
