@@ -60,7 +60,7 @@ const SignUp = () => {
      return (
           <div className="container">
                <div className="card">
-                    <h4 className="title">Sign up!</h4>
+                    <h4 className="title">Sign up</h4>
                     <div className={styles.loginForm}>
                          <form onSubmit={event => handleSubmit(event)}>
                               <input

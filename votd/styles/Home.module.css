@@ -25,7 +25,7 @@
   height: 100px;
   border-top: 1px solid #eaeaea;
   display: flex;
-  color: white;
+  color: black;
   justify-content: center;
   align-items: center;
 }
@@ -61,7 +61,7 @@
 .title,
 .description {
   text-align: left;
-  color: white
+  color: rgb(44, 44, 49);
 }
 
 .description {
@@ -93,21 +93,22 @@
 
 .card {
   margin: 1rem;
-  background-color: rgb(24, 24, 29);
+  background-color: white;
   padding: 1.5rem;
   text-align: left;
-  color: white;
+  color: black;
   text-decoration: none;
-  border-radius: 6px;
-  border-top: 4px solid;
-  border-color: #0070f3;
+  border-radius: 8px;
+  border: 0.5px solid;
+  border-color: #b1b1b1;
   transition: all 0.15s ease;
+  border-top: 4px solid rgb(44, 44, 49);
   /* box-shadow: 0px 0px 10px 1px rgba(206, 206, 206, 0.2) */
 }
 
 .card:hover,
 .card:focus{
-  color: #0070f3;
+  color: rgba(44, 44, 49, 0.747);
   cursor: pointer;
 }
 
@@ -115,13 +116,13 @@
   margin: 0 0 0.7rem 0;
   font-size: 0.8rem;
   font-weight: 500;
-  color: #cecece99;
+  color: #b1b1b1;
 }
 
 .card h5 {
   margin: 0 0 0.7rem 0;
   font-size: 0.6rem;
-  color: #cecece99;
+  color: #63636399;
 }
 
 .card p {

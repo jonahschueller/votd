@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import NavigationBar from '../components/navigation'
 import Head from 'next/head'
-import { AuthProvider } from '../auth/fire-auth'
+import { AuthProvider } from '../lib/auth/fire-auth'
 
 function MyApp({ Component, pageProps }) {
   console.log('reload')

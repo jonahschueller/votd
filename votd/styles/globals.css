@@ -19,8 +19,8 @@ a {
   justify-content: center;
   min-height: 100vh;
   padding: 1rem;
-  padding-top: calc(100px + 1rem);
-  background-color: rgb(18, 18, 22);
+  padding-top: calc(70px + 1rem);
+  background-color: white;
 }
 
 .title {
@@ -34,17 +34,20 @@ a {
   font-size: 0.8rem;
   margin: 0.5rem 2rem;
   color: #3C3C4399;
-  font-weight: 500;
+  font-weight: 300;
 }
 
 .card {
   width: 70%;
   margin: auto;
   padding: 1rem;
-  background-color: rgb(24, 24, 29);
-  border-radius: 6px;
-  color: white;
-  border-top: 4px solid #0070f3;
+  background-color: white;
+  border-radius: 8px;
+  /* border-top: 4px solid; */
+  border: 0.5px solid;
+  border-color: #d6d6d6;
+  color: black;
+  border-top: 4px solid rgb(44, 44, 49);
   /* box-shadow: 0px 0px 10px 1px rgba(49, 49, 49, 0.2) */
 }
 
