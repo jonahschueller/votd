@@ -1,40 +1,90 @@
-import React, { useState } from 'react';
-import fire from '../config/firebase-config';
-import styles from '../styles/Home.module.css'
+import React, { useState } from 'react'
+import styles from '../styles/Login.module.css'
+import { useRouter } from 'next/router'
+import { useAuth } from '../lib/auth/fire-auth'
+import Link from 'next/link'
 
 const Login = () => {
+     const user = useAuth()
+     const router = useRouter()
 
-     const [user, setUser] = useState(null);
+     const [email, setEmail] = useState(null)
+     const [password, setPassword] = useState(null)
+     const [error, setError] = useState(null)
 
-     const login = () => {
-          fire.auth().signInAnonymously()
-          .then(res => {
-               setUser(res.user)
+     // If the user is logged in -> redirect him to the profile page
+     if (user.user) {
+          // Make sure we are in the browser
+          if (typeof window !== 'undefined') {
+               router.back()
+          }
+          
+          return <></>;
+     }
+
+     const handleEmailChange = (event) => {
+          const val = event.target.value
+          setEmail(val)
+     }
+
+     const handlePasswordChange = (event) => {
+          const val = event.target.value
+          setPassword(val)
+     }
+
+     const handleSubmit = (event) => {
+          event.preventDefault()
+          user.signInWithEmailAndPassword(email, password)
+          .then(user => {
+               router.back()
+          }).catch(err => {
+               console.log(err)
+               setError(err)
           })
      }
 
-     const logout = () => {
-          fire.auth().signOut()
-          .then(res => {
-               setUser(false)
-          })
-     }
+     return (
+          <div className="container">
+               <div className="card">
+                    <h4 className="title">Login</h4>
+                    <div className={styles.loginForm}>
+                         <form onSubmit={event => handleSubmit(event)}>
+                              <input
+                                   className={`${styles.formItems} ${styles.formInput} `} 
+                                   type="text" 
+                                   placeholder="Email"
+                                   onChange={event => handleEmailChange(event)}>
+                              </input>
+                              <input
+                                   className={`${styles.formItems} ${styles.formInput} `} 
+                                   type="password" 
+                                   name="Password"
+                                   placeholder="Password"
+                                   onChange={event => handlePasswordChange(event)}>
+                              </input>
 
-     if (user) {
-          return (
-               <div className={styles.container}>
-                    <p>You are logged in! Your id is {user.uid}</p>
-                    <button onClick={logout}>Logout</button>
+                              { error != null ? 
+                              <p className={styles.errorMsg}>*Username or password is not correct!</p> 
+                              : <></> }
+
+                              <button
+                                   className={`${styles.formItems} ${styles.formSubmit} ${styles.formButton}`} 
+                                   type="submit">
+                                        Login
+                              </button>
+
+                              <Link href="/signup">
+                                   <a
+                                   className={`${styles.formItems} ${styles.formSignUp} ${styles.formButton}`}>
+                                   Sign up
+                                   </a>
+                              </Link>
+                         </form>
+                    </div>
                </div>
-          );
-     }else {
-          return (
-               <div className={styles.container}>
-                    <p>You are logged out!</p>
-                    <button onClick={login}>Login</button>
-               </div>
-          );
-     }
+          </div>
+     );
 };
 
 export default Login;
+

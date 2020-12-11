@@ -29,7 +29,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className={styles.container}>
+      <div className="container">
         <Head>
           <title>Home</title>
           <link rel="icon" href="/favicon.ico" />

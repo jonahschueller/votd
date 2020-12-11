@@ -10,8 +10,6 @@ var firebaseConfig = {
      appId: process.env.NEXT_PUBLIC_appId
 };
 
-console.log(firebaseConfig)
-
 try {
      firebase.initializeApp(firebaseConfig);
 } catch(err){
@@ -19,5 +17,5 @@ try {
           console.error('Firebase initialization error', err.stack)
      }
 }
-const fire = firebase;
-export default fire;
+
+export default firebase;

@@ -1,29 +1,30 @@
-import React from 'react'
-import fire from '../config/firebase-config'
+import React, { useContext } from 'react'
 import styles from '../styles/Poll.module.css'
-
-import useAuth from '../auth/fire-auth'
+import { useAuth } from '../lib/auth/fire-auth'
+import { useRouter } from 'next/router'
 
 const Profile = () => {
-
      const user = useAuth()
+     const router = useRouter()
+     
+     console.log(user)
 
-     if (user == null) {
-          return (
-               <h3>Loading...</h3>
-          )
-     }
+     if (user.user == null) {
 
-     const signout = () => {
-          fire.signout()
+          // Make sure we are in the browser
+          if (typeof window !== 'undefined') {
+               router.push('/login')
+          }
+
+          return <></>;
      }
 
      return (
-          <div className={styles.container}>
-               <div className={styles.card}>
-                    <h4 className={styles.title}>Profile</h4>
-
-                    <button>
+          <div className="container">
+               <div className="card">
+                    <h4 className="title">Profile</h4>
+                    <p>You are logged in! {user.user.uid} f</p>
+                    <button onClick={() => user.signOut()}>
                          Logout
                     </button>
                </div>

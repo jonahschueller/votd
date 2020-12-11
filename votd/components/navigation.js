@@ -7,36 +7,29 @@ const NavigationBar = () => {
      <nav>
           <div className={styles.container}>
                <Link href="/">
-                    <h3 className={styles.logo}>votd</h3>
+                    <div className={styles.item}>
+                         <h3 className={styles.itemText}>votd</h3>
+                    </div>
                </Link>
                <Link href="/">
                     <div className={styles.item}>
-                         <div className={styles.overlay}>
-                              <i class="fas fa-home fa-sm"></i>   
-                         </div>
                          <h4 className={styles.itemText}>Home</h4>
                     </div>
                </Link>
                <Link href="/search">
                     <div className={styles.item}>
-                         <div className={styles.overlay}>
-                              <i class="fas fa-search fa-sm"></i>
-                         </div>
                          <h4 className={styles.itemText}>Search</h4>
                     </div>
                </Link>
                <Link href="/">
                <div className={styles.item}>
-                         <div className={styles.overlay}>
-                              <i class="fas fa-plus fa-sm"></i>
-                         </div>
                          <h4 className={styles.itemText}>New poll</h4>
                     </div>
                </Link>
 
                <Link href="/profile">
                     <div className={styles.profile}>
-                         <i  class="fas fa-user fa-lg"></i>
+                         <i  class="fas fa-user fa-m"></i>
                     </div>
                </Link>
           </div>
